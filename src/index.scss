@@ -9,4 +9,23 @@ body {
   -moz-osx-font-smoothing: grayscale;
   text-rendering: optimizeLegibility;
   overflow-x:hidden;
+  box-sizing:border-box;
+}
+.grid-container td {
+  border: 0.1px solid var(--fallback-bc,oklch(var(--bc)/0.1));
+  height: 1fr;
+  width: 1fr;
+}
+.grid-container .Wall ,.Empty {
+  cursor: pointer;
+
+}
+.grid-container  .Wall {
+  background-color: var(--fallback-b3,oklch(var(--b3)));
+}
+.grid-container  .Start {
+  background-color: var(--fallback-su,oklch(var(--su)));
+}
+.grid-container  .End {
+  background-color: var(--fallback-er,oklch(var(--er)));
 }
