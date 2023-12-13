@@ -7,7 +7,9 @@ export enum CellType{
 }
 interface Cell{
     id:string;
-    type:CellType
+    type:CellType,
+    row:number,
+    col:number
 }
 export type {
     Cell

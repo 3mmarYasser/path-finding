@@ -6,12 +6,13 @@ import SketchPage from "../pages/Sketch/Sketch.page.tsx";
 const App:React.FC = ()=> {
   return (
       <BrowserRouter>
-
-        <Routes>
-          <Route index element={
-              <SketchPage/>
-          } />
-        </Routes>
+          <div  className="overflow-hidden min-h-screen"  >
+              <Routes>
+                  <Route index element={
+                      <SketchPage/>
+                  } />
+              </Routes>
+          </div>
       </BrowserRouter>
   )
 }

@@ -12,13 +12,26 @@ body {
   box-sizing:border-box;
 }
 .grid-container td {
-  border: 0.1px solid var(--fallback-bc,oklch(var(--bc)/0.1));
+  border: 1px solid var(--fallback-bc,oklch(var(--bc)/0.1));
   height: 1fr;
   width: 1fr;
+  transition: transform 0.2s;
+  transform-origin:center;
+  &:hover{
+    transform: scale(1.2);
+  }
+}
+.grid-container .Empty{
+  background-color: var(--fallback-b3,oklch(var(--b1)));
 }
 .grid-container .Wall ,.Empty {
   cursor: pointer;
-
+  &.visited{
+    background-color: #ffcccb;
+  }
+  &.path{
+    background-color: aqua;
+  }
 }
 .grid-container  .Wall {
   background-color: var(--fallback-b3,oklch(var(--b3)));
