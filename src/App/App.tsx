@@ -1,4 +1,4 @@
-import React from "react";
+import React, {Suspense} from "react";
 import {BrowserRouter, Route, Routes} from "react-router-dom"
 import './App.scss'
 import SketchPage from "../pages/Sketch/Sketch.page.tsx";
@@ -8,12 +8,16 @@ const App:React.FC = ()=> {
   return (
       <BrowserRouter>
           <div  className="overflow-hidden min-h-screen"  >
-              <Navbar/>
-              <Routes>
-                  <Route index element={
-                      <SketchPage/>
-                  } />
-              </Routes>
+              <Suspense fallback={<div>Loading...</div>}>
+                  <Navbar/>
+                  <main style={{marginTop:(Number(document.querySelector("nav")?.offsetHeight))|| "66px"}}>
+                      <Routes>
+                          <Route index element={
+                              <SketchPage/>
+                          } />
+                      </Routes>
+                  </main>
+              </Suspense>
           </div>
       </BrowserRouter>
   )

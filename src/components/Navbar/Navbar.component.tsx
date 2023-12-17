@@ -10,8 +10,7 @@ import {TbMessageBolt} from "react-icons/tb";
 
 const Navbar = () => {
     return (
-        <>
-            <div className="navbar bg-base-100 border-b-2 border-b-base-300">
+            <nav className="navbar bg-base-100 border-b-2 border-b-base-content/30 fixed">
                 <div className="navbar-start">
                     <Link to={"/"} className="btn btn-ghost  rounded-btn">
                         <GiPathDistance className={"text-4xl text-primary "}/>
@@ -45,8 +44,7 @@ const Navbar = () => {
 
                     </div>
                 </div>
-            </div>
-        </>
+            </nav>
 
     );
 };
