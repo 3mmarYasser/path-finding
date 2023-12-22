@@ -14,7 +14,7 @@ const generateGrid = (rows:number , cols:number):Cell[][]=>{
                 col:colIndex,
                 type: (rowIndex === 0 && colIndex === 0 ? CellType.START
                     : rowIndex === rows-6 && colIndex === cols-5 ? CellType.END
-                        :(Math.random() < 0.3 ? CellType.WALL : CellType.EMPTY))
+                        : CellType.EMPTY),
 
             })
         })
@@ -49,8 +49,6 @@ const Grid:React.FC = () => {
     }
     return (
         <DndProvider backend={HTML5Backend} >
-            {/*<button className="btn btn-wide btn-primary btn-outline " onClick={GetPath}>Visualize</button>*/}
-
             <div className="w-full h-full">
                 <table className="w-full h-full grid-container ">
                     <tbody>

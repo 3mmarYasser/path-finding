@@ -10,7 +10,7 @@ const algorithms = [
     },
     {
         name: 'A*',
-        desc:"optimally navigates graphs using heuristics, prioritizing efficiency in pathfinding."
+        desc:"optimally navigates graphs using heuristics."
     },
     {
         name: 'Depth First Search',
@@ -19,7 +19,7 @@ const algorithms = [
     {
         name: 'Breadth FirstSearch',
         desc:"Methodical level-by-level exploration for efficient path discovery."
-    },
+    }
 ]
 const Algorithms = () => {
     const [selected, setSelected] = useState(algorithms[0])

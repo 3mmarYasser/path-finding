@@ -19,26 +19,24 @@ const GridSetting = () => {
                     <input type="range" min={0} max="100" defaultValue="40" className="range  range-sm range-primary" />
                 </label>
 
-                <label className="form-control w-full ">
-                    <div className="label">
-                        <span className="label-text font-bold">Width</span>
-                        <span className="label-text-alt">800px</span>
-                    </div>
-                    <input type="range" min={0} max="100" defaultValue="40" className="range  range-sm " />
-                </label>
 
-                <label className="form-control w-full ">
-                    <div className="label">
-                        <span className="label-text font-bold">Height</span>
-                        <span className="label-text-alt">1200px</span>
-                    </div>
-                    <input type="range" min={0} max="100" defaultValue="40" className="range  range-sm " />
-                </label>
 
                 <div className="form-control">
                     <label className="label cursor-pointer">
                         <span className="label-text text-lg">Enable Borders</span>
                         <input type="checkbox" defaultChecked={true} className="checkbox checkbox-primary" />
+                    </label>
+                </div>
+                <div className="form-control">
+                    <label className="label cursor-pointer">
+                        <span className="label-text text-lg">Enable Animation</span>
+                        <input type="checkbox" className="toggle toggle-primary" defaultChecked={true} />
+                    </label>
+                </div>
+                <div className="form-control">
+                    <label className="label cursor-pointer">
+                        <span className="label-text text-lg">Enable Diagonal</span>
+                        <input type="checkbox" className="toggle " defaultChecked={true} />
                     </label>
                 </div>
 

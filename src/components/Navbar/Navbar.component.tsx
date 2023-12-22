@@ -18,7 +18,7 @@ const Navbar = () => {
         <Disclosure as={Fragment}  >
             {({open})=>(
                 <>
-                    <nav className={classNames("navbar bg-base-100 border-b-2 border-b-base-content/20 fixed z-40")}>
+                    <nav className={classNames("navbar bg-base-100 border-b-2 border-b-base-content/20 z-10")}>
                         <div className="navbar-start">
                             <Link to={"/"} className="btn btn-ghost  rounded-btn">
                                 <GiPathDistance className={"text-4xl text-primary "}/>
@@ -62,7 +62,7 @@ const Navbar = () => {
                             </div>
                         </div>
                     </nav>
-                    <div style={{height:(Number(document.querySelector("nav")?.offsetHeight))|| "66px"}}/>
+                    {/*<div style={{height:(Number(document.querySelector("nav")?.offsetHeight))|| "66px"}}/>*/}
                     <Transition
                         show={open}
                         enter="transition-transform transform duration-300"
