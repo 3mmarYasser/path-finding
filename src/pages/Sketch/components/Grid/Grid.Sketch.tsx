@@ -48,10 +48,10 @@ const Grid:React.FC = () => {
             ))
     }
     return (
-        <DndProvider backend={HTML5Backend}>
-            <button className="btn btn-wide btn-primary btn-outline" onClick={GetPath}>Visualize</button>
+        <DndProvider backend={HTML5Backend} >
+            {/*<button className="btn btn-wide btn-primary btn-outline " onClick={GetPath}>Visualize</button>*/}
 
-            <div className="w-full h-screen">
+            <div className="w-full h-full">
                 <table className="w-full h-full grid-container ">
                     <tbody>
                     {gridData.map((row ,rowIndex)=>(

@@ -9,8 +9,8 @@ const App:React.FC = ()=> {
       <BrowserRouter>
           <div  className="overflow-hidden min-h-screen"  >
               <Suspense fallback={<div>Loading...</div>}>
-                  <Navbar/>
-                  <main style={{marginTop:(Number(document.querySelector("nav")?.offsetHeight))|| "66px"}}>
+                  {/*<Navbar/>*/}
+                  <main >
                       <Routes>
                           <Route index element={
                               <SketchPage/>

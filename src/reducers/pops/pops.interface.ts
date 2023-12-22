@@ -1,7 +1,7 @@
 export enum PopsType {
     Undefined = "Undefined",
-    Test = "Test",
-    Test2 = "Test2"
+    Nav_Menu = "Nav_Menu",
+    Test = "Test"
 }
 export interface Pops{
     type:PopsType,
