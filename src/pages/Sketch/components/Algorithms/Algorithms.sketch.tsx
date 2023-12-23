@@ -1,29 +1,41 @@
-import React, {useState} from 'react';
+import React, {useEffect, useState} from 'react';
 import {SiThealgorithms} from "react-icons/si";
 import {RadioGroup} from "@headlessui/react";
 import classNames from "classnames";
 import {PiFlagFill} from "react-icons/pi";
+import {useDispatch, useSelector} from "react-redux";
+import {AppDispatch, RootState} from "../../../../store";
+import {AlgorithmType} from "../../../../reducers/Grid/Grid.interface.ts";
+import {setAlgorithm} from "../../../../reducers/Grid/Grid.reducer.ts";
 const algorithms = [
     {
         name: 'Dijkstra',
+        type:AlgorithmType.DIJKSTRA,
         desc:"Optimal path-finder in weighted graphs."
     },
     {
         name: 'A*',
+        type:AlgorithmType.AStar,
         desc:"optimally navigates graphs using heuristics."
     },
     {
         name: 'Depth First Search',
+        type:AlgorithmType.DFS,
         desc:"Deep exploration for in-depth pathfinding."
     },
     {
         name: 'Breadth FirstSearch',
+        type:AlgorithmType.BFS,
         desc:"Methodical level-by-level exploration for efficient path discovery."
     }
 ]
 const Algorithms = () => {
-    const [selected, setSelected] = useState(algorithms[0])
-
+    const {algorithm} = useSelector((state:RootState)=>state.grid);
+    const [selected, setSelected] = useState(algorithms.find((algo)=>algo.type===algorithm)||algorithms[0])
+    const dispatch:AppDispatch = useDispatch();
+    useEffect(()=>{
+        dispatch(setAlgorithm(selected.type))
+    },[selected])
     return (
         <div className=" overflow-hidden rounded-box bg-base-100 w-full ">
             <div className="w-full border-b-2 border-b-base-content/10 flex items-center justify-between px-3 py-4">

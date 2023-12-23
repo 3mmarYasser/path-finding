@@ -3,8 +3,8 @@ import {Pops, PopsType} from "../../reducers/pops/pops.interface.ts";
 import {useDispatch, useSelector} from "react-redux";
 import {AppDispatch, RootState} from "../../store";
 import {closePop} from "../../reducers/pops/pops.reducer.ts";
-import AbstractPop from "../AbstractPop/AbstractPop.tsx";
 import classNames from "classnames";
+import AbstractPop from "../AbstractPop/AbstractPop.tsx";
 
 interface Props {
     children:((closeModal:()=>void , data:Pops["data"]) => React.ReactNode) | React.ReactNode;

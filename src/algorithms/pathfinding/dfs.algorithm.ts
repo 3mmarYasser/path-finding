@@ -1,25 +1,27 @@
 import {CellType} from "../../reducers/Grid/Grid.interface.ts";
 import {PathfindingAlgorithm} from "./algorithms.interface.ts";
 
-const dijkstra: PathfindingAlgorithm = (
+const dfs: PathfindingAlgorithm = (
     currentCell,
     neighbors,
     distance,
     previousCells,
     priorityQueue,
     memoizedVisitedCells,
-    memoizedShortestPath
+    memoizedShortestPath,
+    endCell
 ) => {
     neighbors.forEach((neighbor) => {
-        if (neighbor.type !== CellType.WALL) {
+        if (neighbor.type !== CellType.WALL && !memoizedVisitedCells.includes(neighbor)) {
             const newDistance = distance[currentCell.id] + 1;
             if (newDistance < distance[neighbor.id]) {
                 distance[neighbor.id] = newDistance;
                 previousCells[neighbor.id] = currentCell;
 
-                priorityQueue.sort((a, b) => distance[a.id] - distance[b.id]);
+                priorityQueue.unshift(neighbor); // DFS uses a stack (unshift for LIFO behavior)
+                memoizedVisitedCells.push(neighbor);
             }
         }
     });
 };
-export default dijkstra;
+export default dfs;

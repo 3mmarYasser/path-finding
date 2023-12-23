@@ -5,25 +5,35 @@ import classNames from "classnames";
 import {GrClear} from "react-icons/gr";
 
 import {TbArrowBadgeUpFilled} from "react-icons/tb";
+import {useDispatch, useSelector} from "react-redux";
+import {AppDispatch, RootState} from "../../../../store";
+import {setAnimationSpeed} from "../../../../reducers/gridAnimation/gridAnimation.reducer.ts";
+import {setEnableSounds} from "../../../../reducers/gridSettings/gridSettings.reducer.ts";
 
-const Actions = () => {
-    const [animationSpeed , setAnimationSpeed] = React.useState<number>(2)
-
+interface Props {
+    visualize:()=>void;
+}
+const Actions:React.FC<Props> = ({visualize}) => {
+    const {animationRunning,animationSpeed} = useSelector((state:RootState)=>state.gridAnimation);
+    const {enableSounds} = useSelector((state:RootState)=>state.gridSettings);
+    const dispatch:AppDispatch = useDispatch();
     return (
         <div className="w-full flex items-center rounded-b-3xl justify-between bg-base-100 p-3 md:p-5 mb-5 ">
             <h3 className="hidden md:block text-2xl font-bold">Actions</h3>
             <div className={" flex flex-wrap justify-center items-center   gap-3"}>
-                <button className="btn btn-sm lg:btn-md hover:btn-success hover:btn-outline">
+                <button
+                    onClick={visualize}
+                    className="btn btn-sm lg:btn-md hover:btn-success hover:btn-outline ">
                     <HiMiniPlay className={"text-success text-xl"} />
                     <span className="hidden md:block">Visualize</span>
                 </button>
-                <button className="btn btn-sm lg:btn-md hover:btn-success  hover:btn-outline ">
-                    <FaPause  className={classNames("text-xl",{"text-secondary ":true})} />
+                <button className={classNames("btn btn-sm lg:btn-md hover:btn-success hover:btn-outline",{"btn-disabled":!animationRunning})}>
+                    <FaPause  className={classNames("text-xl",{"text-secondary ":animationRunning})} />
                     <span className="hidden md:block">Pause</span>
 
                 </button>
-                <button className="btn btn-sm lg:btn-md hover:btn-success  hover:btn-outline">
-                    <FaRegStopCircle  className={classNames("text-xl",{"text-error":true})} />
+                <button className={classNames("btn btn-sm lg:btn-md hover:btn-success  hover:btn-outline",{"btn-disabled":!animationRunning})}>
+                    <FaRegStopCircle  className={classNames("text-xl",{"text-error":animationRunning})} />
                     <span className="hidden md:block">Quit</span>
                 </button>
                 <button className="btn btn-sm lg:btn-md hover:btn-success hover:btn-outline">
@@ -42,13 +52,13 @@ const Actions = () => {
 
                         <button
                             className="text-primary p-0"
-                            onClick={()=>{animationSpeed <6 &&  setAnimationSpeed((prev)=>prev+1)}}>
+                            onClick={()=>{animationSpeed <6 &&  dispatch(setAnimationSpeed(animationSpeed +1))}}>
                             <TbArrowBadgeUpFilled />
 
                         </button>
                         <button
                             className="transform rotate-180 text-primary"
-                            onClick={()=>{animationSpeed > 1 && setAnimationSpeed((prev)=>prev-1)}}>
+                            onClick={()=>{animationSpeed > 1 && dispatch(setAnimationSpeed(animationSpeed -1))}}>
                             <TbArrowBadgeUpFilled />
 
                         </button>
@@ -58,7 +68,11 @@ const Actions = () => {
                     <label className="swap ">
 
                         {/* this hidden checkbox controls the state */}
-                        <input type="checkbox" defaultChecked={false}/>
+                        <input type="checkbox"
+                               onChange={()=>{
+                                       dispatch(setEnableSounds(!enableSounds))
+                               }}
+                               checked={enableSounds} />
 
                         {/* volume on icon */}
                         <svg className="swap-on fill-current" xmlns="http://www.w3.org/2000/svg" width="30" height="30" viewBox="0 0 24 24"><path d="M14,3.23V5.29C16.89,6.15 19,8.83 19,12C19,15.17 16.89,17.84 14,18.7V20.77C18,19.86 21,16.28 21,12C21,7.72 18,4.14 14,3.23M16.5,12C16.5,10.23 15.5,8.71 14,7.97V16C15.5,15.29 16.5,13.76 16.5,12M3,9V15H7L12,20V4L7,9H3Z"/></svg>
