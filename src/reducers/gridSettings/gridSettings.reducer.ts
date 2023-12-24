@@ -6,7 +6,7 @@ const gridSettingsReducer = createSlice({
     initialState:<GridSettings> {
         gridWidth:1000,
         gridHeight:600,
-        cellSize:20,
+        cellSize:25,
         enableBorders:true,
         enableDiagonals:true,
         enableSounds:false

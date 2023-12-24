@@ -8,7 +8,7 @@ const gridAnimationReducer = createSlice({
         animationTime: 0.00,
         animationSpeed: 2,
         animationRunning: false,
-        enableAnimation: false,
+        enableAnimation: true,
     },
     reducers: {
         setRealTimeExecution: (state, action) => {

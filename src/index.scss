@@ -20,13 +20,15 @@ body {
   transform-origin:center;
 }
 .grid-container .Empty , .grid-container .Wall {
-
+  transition: background-color 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
   cursor: pointer;
   &.visited{
     background-color: var(--fallback-p,oklch(var(--p)/0.8));
+    animation: visitedAnimation 0.5s ease-in-out;
   }
   &.path{
     background-color: var(--fallback-p,oklch(var(--su)/0.8));
+    animation: pathAnimation 0.5s ease-in-out, pulseAnimation 1.5s ease-in-out;
   }
 }
 .grid-container{
@@ -45,12 +47,49 @@ body {
   background-color: var(--fallback-b3, oklch(var(--n) / 0.9));
   animation: fadeInWall 0.5s ease-out;
 }
+@keyframes visitedAnimation {
+  0% {
+    transform: scale(0.8);
+    background-color: #aaffaa;
+  }
+  50% {
+    transform: scale(1.2);
+  }
+  100% {
+    transform: scale(1);
+    background-color: #aaffaa;
+  }
+}
+
+@keyframes pathAnimation {
+  0% {
+    transform: scale(1) rotate(0deg);
+    background-color: #aaaaff;
+  }
+  50% {
+    transform: scale(1.2) rotate(180deg);
+  }
+  100% {
+    transform: scale(1) rotate(360deg);
+    background-color: #aaaaff;
+  }
+}
+
+@keyframes pulseAnimation {
+  0%, 100% {
+    box-shadow: 0 0 0 0px rgba(170, 255, 170, 0.7);
+  }
+  50% {
+    box-shadow: 0 0 0 15px rgba(170, 255, 170, 0);
+  }
+}
 
 @keyframes fadeInWall {
   0% {
     opacity: 0;
     transform: scale(0.5);
     background-color: var(--fallback-b3, oklch(var(--p)));
+    border-radius: 100%;
   }
   100% {
     opacity: 1;

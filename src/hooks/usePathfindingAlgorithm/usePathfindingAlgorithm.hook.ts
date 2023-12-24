@@ -2,19 +2,21 @@ import { useCallback } from "react";
 import {AlgorithmType, Cell, CellType} from "../../reducers/Grid/Grid.interface.ts";
 import { useDispatch, useSelector } from "react-redux";
 import { AppDispatch, RootState } from "../../store";
-import { setShortestPath, setVisitedCells } from "../../reducers/Grid/Grid.reducer.ts";
+import {resetGrid, setShortestPath, setVisitedCells} from "../../reducers/Grid/Grid.reducer.ts";
 import { setRealTimeExecution } from "../../reducers/gridAnimation/gridAnimation.reducer.ts";
 import dijkstraAlgorithm from "../../algorithms/pathfinding/dijkstra.algorithm.ts";
 import aStarAlgorithm from "../../algorithms/pathfinding/aStar.algorithm.ts";
 import bfsAlgorithm from "../../algorithms/pathfinding/bfs.algorithm.ts";
 import dfsAlgorithm from "../../algorithms/pathfinding/dfs.algorithm.ts";
+import {Simulate} from "react-dom/test-utils";
+import reset = Simulate.reset;
 
 
 
-
-interface ReturnInterface extends Array<()=>void> {
+type GetPathType =() => Promise<void>
+interface ReturnInterface extends Array<GetPathType> {
     length: 1;
-    0: ()=>void;
+    0: GetPathType;
 }
 const algorithmFunctions = {
     [AlgorithmType.DFS]: dfsAlgorithm,
@@ -23,10 +25,10 @@ const algorithmFunctions = {
     [AlgorithmType.AStar]: aStarAlgorithm,
 };
 const usePathfindingAlgorithm = (): ReturnInterface => {
-    const { gridData, startCell, endCell, algorithm } = useSelector(
+    const { gridData, startCell, endCell, algorithm,shortestPath } = useSelector(
         (state: RootState) => state.grid
     );
-    const { enableAnimation } = useSelector((state: RootState) => state.gridAnimation);
+    const { enableAnimation,animationSpeed } = useSelector((state: RootState) => state.gridAnimation);
     const { enableDiagonals } = useSelector((state: RootState) => state.gridSettings);
 
     const dispatch: AppDispatch = useDispatch();
@@ -53,7 +55,8 @@ const usePathfindingAlgorithm = (): ReturnInterface => {
     );
 
     const getPath = useCallback(
-        () => {
+        async () => {
+            dispatch(resetGrid())
             const distance = {};
             const previousCells = {};
             const startTime = performance.now();
@@ -105,19 +108,50 @@ const usePathfindingAlgorithm = (): ReturnInterface => {
                     endCell
                 );
 
+
             }
 
+            const endTime = performance.now();
+            dispatch(setRealTimeExecution((endTime - startTime) / 1000));
+
             if (enableAnimation) {
-                // Add animation logic here
+                // Animate visited cells
+                await animateVisitedCells(memoizedVisitedCells, animationSpeed*5);
+
+                // Animate shortest path
+                await animateShortestPath(memoizedShortestPath, animationSpeed*5);
+
             } else {
+                // Update Redux state one last time if animation is disabled
                 dispatch(setVisitedCells(memoizedVisitedCells));
                 dispatch(setShortestPath(memoizedShortestPath));
             }
-            const endTime = performance.now();
-            dispatch(setRealTimeExecution((endTime - startTime) / 1000));
+
         },
-        [gridData, startCell, endCell, getNeighbors, enableAnimation, algorithm]
+        [gridData, startCell, endCell, getNeighbors, enableAnimation, algorithm ,animationSpeed]
     );
+    const animateVisitedCells = async (visitedCells: Cell[], speed: number) => {
+        // Implement your animation logic for visited cells
+        for (let i = 0; i < visitedCells.length; i++) {
+            // Simulate delay for animation speed
+            await sleep(1000 / speed);
+
+            // Dispatch action to update visited cells
+            dispatch(setVisitedCells(visitedCells.slice(0, i + 1)));
+        }
+    };
+
+    const animateShortestPath = async (shortestPath: Cell[], speed: number) => {
+        // Implement your animation logic for the shortest path
+        for (let i = 0; i < shortestPath.length; i++) {
+
+            await sleep(15 / speed);
+
+            dispatch(setShortestPath(shortestPath.slice(0, i + 1)));
+        }
+    };
+
+    const sleep = (ms: number) => new Promise((resolve) => setTimeout(resolve, ms));
 
     return [getPath];
 };
