@@ -21,17 +21,23 @@ const Navbar = () => {
                     })}>
                         Home
                     </NavLink>
-                    <NavLink to={"/Overview"} className={({isActive})=>classNames("cursor-pointer flex items-center  gap-1 justify-center", {
-                        "text-primary": isActive,
-                    })}>
+                    <button
+                        onClick={()=>{
+                            let element = document.getElementById("overview");
+                            element.scrollIntoView({behavior: "smooth", block: "start"})
+                        }}
+                        className={"cursor-pointer flex items-center  gap-1 justify-center"}>
                         Overview
-                    </NavLink>
+                    </button>
 
-                    <NavLink to={"/contact-us"} className={({isActive})=>classNames("cursor-pointer flex items-center  gap-1 justify-center", {
-                        "text-primary": isActive,
-                    })}>
+                    <button
+                        onClick={()=>{
+                            let element = document.getElementById("contact");
+                            element.scrollIntoView({behavior: "smooth", block: "start"})
+                        }}
+                        className={"cursor-pointer flex items-center  gap-1 justify-center"}>
                         Contact Us
-                    </NavLink>
+                    </button>
 
                 </div>
 

@@ -7,7 +7,7 @@ import {GrClear} from "react-icons/gr";
 import {TbArrowBadgeUpFilled} from "react-icons/tb";
 import {useDispatch, useSelector} from "react-redux";
 import {AppDispatch, RootState} from "../../../../store";
-import {setAnimationSpeed} from "../../../../reducers/gridAnimation/gridAnimation.reducer.ts";
+import {setAnimationRunning, setAnimationSpeed} from "../../../../reducers/gridAnimation/gridAnimation.reducer.ts";
 import {setEnableSounds} from "../../../../reducers/gridSettings/gridSettings.reducer.ts";
 import {Link} from "react-router-dom";
 import {IoIosArrowBack} from "react-icons/io";
@@ -30,14 +30,15 @@ const Actions:React.FC<Props> = ({visualize}) => {
             <div className={" flex flex-wrap justify-center items-center   gap-3"}>
                 <button
                     onClick={visualize}
-                    className="btn btn-sm lg:btn-md hover:btn-success hover:btn-outline ">
-                    <HiMiniPlay className={"text-success text-xl"} />
+                    className={classNames("btn btn-sm lg:btn-md hover:btn-success hover:btn-outline",{"btn-disabled":animationRunning})}>
+                    <HiMiniPlay className={classNames("text-xl",{"text-success ":!animationRunning})} />
                     <span className="hidden md:block">Visualize</span>
                 </button>
-                <button className={classNames("btn btn-sm lg:btn-md hover:btn-success hover:btn-outline",{"btn-disabled":!animationRunning})}>
+                <button
+                    onClick={()=>dispatch(setAnimationRunning(false))}
+                    className={classNames("btn btn-sm lg:btn-md hover:btn-success hover:btn-outline",{"btn-disabled":!animationRunning})}>
                     <FaPause  className={classNames("text-xl",{"text-secondary ":animationRunning})} />
                     <span className="hidden md:block">Pause</span>
-
                 </button>
                 <button className={classNames("btn btn-sm lg:btn-md hover:btn-success  hover:btn-outline",{"btn-disabled":!animationRunning})}>
                     <FaRegStopCircle  className={classNames("text-xl",{"text-error":animationRunning})} />

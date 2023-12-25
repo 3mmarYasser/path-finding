@@ -3,7 +3,7 @@ import {AlgorithmType, Cell, CellType} from "../../reducers/Grid/Grid.interface.
 import { useDispatch, useSelector } from "react-redux";
 import { AppDispatch, RootState } from "../../store";
 import {resetGrid, setShortestPath, setVisitedCells} from "../../reducers/Grid/Grid.reducer.ts";
-import { setRealTimeExecution } from "../../reducers/gridAnimation/gridAnimation.reducer.ts";
+import {setAnimationRunning, setRealTimeExecution} from "../../reducers/gridAnimation/gridAnimation.reducer.ts";
 import dijkstraAlgorithm from "../../algorithms/pathfinding/dijkstra.algorithm.ts";
 import aStarAlgorithm from "../../algorithms/pathfinding/aStar.algorithm.ts";
 import bfsAlgorithm from "../../algorithms/pathfinding/bfs.algorithm.ts";
@@ -30,6 +30,7 @@ const usePathfindingAlgorithm = (): ReturnInterface => {
     );
     const { enableAnimation,animationSpeed,animationRunning } = useSelector((state: RootState) => state.gridAnimation);
     const { enableDiagonals } = useSelector((state: RootState) => state.gridSettings);
+
     const dispatch: AppDispatch = useDispatch();
 
     const getNeighbors = useCallback(
@@ -114,11 +115,13 @@ const usePathfindingAlgorithm = (): ReturnInterface => {
             dispatch(setRealTimeExecution((endTime - startTime) / 1000));
 
             if (enableAnimation) {
+                dispatch(setAnimationRunning(true));
                 // Animate visited cells
                 await animateVisitedCells(memoizedVisitedCells, animationSpeed*5);
 
                 // Animate shortest path
                 await animateShortestPath(memoizedShortestPath, animationSpeed*5);
+                dispatch(setAnimationRunning(false));
 
             } else {
                 // Update Redux state one last time if animation is disabled
@@ -127,25 +130,41 @@ const usePathfindingAlgorithm = (): ReturnInterface => {
             }
 
         },
-        [gridData, startCell, endCell, getNeighbors, enableAnimation, algorithm ,animationSpeed]
-    );
-    const animateVisitedCells = async (visitedCells: Cell[], speed: number) => {
-        // Implement your animation logic for visited cells
+        [gridData, startCell, endCell, getNeighbors, enableAnimation, algorithm ,animationSpeed ,animationRunning]
+    );const animateVisitedCells = async (visitedCells: Cell[], speed: number) => {
         for (let i = 0; i < visitedCells.length; i++) {
-            // Simulate delay for animation speed
-            await sleep(120 / speed);
+            if (animationRunning) {
+                // If paused, wait until resumed
+                await new Promise<void>(resolve => {
+                    const intervalId = setInterval(() => {
+                        if (animationRunning) {
+                            clearInterval(intervalId);
+                            resolve();
+                        }
+                    }, 100);
+                });
+            }
 
-            // Dispatch action to update visited cells
+            await sleep(120 / speed);
             dispatch(setVisitedCells(visitedCells.slice(0, i + 1)));
         }
     };
 
     const animateShortestPath = async (shortestPath: Cell[], speed: number) => {
-        // Implement your animation logic for the shortest path
         for (let i = 0; i < shortestPath.length; i++) {
+            if (animationRunning) {
+                // If paused, wait until resumed
+                await new Promise<void>(resolve => {
+                    const intervalId = setInterval(() => {
+                        if (animationRunning) {
+                            clearInterval(intervalId);
+                            resolve();
+                        }
+                    }, 100);
+                });
+            }
 
             await sleep(120 / speed);
-
             dispatch(setShortestPath(shortestPath.slice(0, i + 1)));
         }
     };

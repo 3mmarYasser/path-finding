@@ -3,7 +3,7 @@ import MobilMap from "./../../../../assets/images/mobile-map.png"
 import {Link} from "react-router-dom";
 const Info:React.FC = () => {
     return (
-        <div className="h-screen snap-center flex flex-col items-center justify-center">
+        <div id={"overview"} className="h-screen snap-center flex flex-col items-center justify-center">
             <div className="h-full flex  flex-col xl:flex-row w-full justify-center items-center xl:max-w-7xl xl:justify-between gap-y-5 xl:gap-7">
                 <div className="flex-1 xl:flex-[2] relative  w-full h-full p-10 xl:p-0">
                     <img

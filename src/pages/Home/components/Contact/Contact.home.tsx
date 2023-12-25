@@ -29,7 +29,7 @@ const Contact:React.FC = () => {
     });
 
     return (
-        <div className="h-screen snap-center">
+        <div id={"contact"} className="h-screen snap-center">
             <div className="w-full h-full flex justify-between gap-8 ">
                 <div className="flex items-center justify-end flex-1">
 
