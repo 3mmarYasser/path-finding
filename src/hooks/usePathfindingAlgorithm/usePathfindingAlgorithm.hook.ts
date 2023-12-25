@@ -131,8 +131,10 @@ const usePathfindingAlgorithm = (): ReturnInterface => {
 
         },
         [gridData, startCell, endCell, getNeighbors, enableAnimation, algorithm ,animationSpeed ,animationRunning]
-    );const animateVisitedCells = async (visitedCells: Cell[], speed: number) => {
+    );
+    const animateVisitedCells = async (visitedCells: Cell[], speed: number) => {
         for (let i = 0; i < visitedCells.length; i++) {
+            console.log("Animation running");
             if (animationRunning) {
                 // If paused, wait until resumed
                 await new Promise<void>(resolve => {

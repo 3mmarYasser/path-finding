@@ -1,6 +1,6 @@
 export enum PopsType {
     Undefined = "Undefined",
-    Nav_Menu = "Nav_Menu",
+    ThemesMenu = "Themes_Menu",
     Test = "Test"
 }
 export interface Pops{

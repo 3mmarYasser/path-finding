@@ -36,16 +36,17 @@ const Actions:React.FC<Props> = ({visualize}) => {
                 </button>
                 <button
                     onClick={()=>dispatch(setAnimationRunning(false))}
-                    className={classNames("btn btn-sm lg:btn-md hover:btn-success hover:btn-outline",{"btn-disabled":!animationRunning})}>
-                    <FaPause  className={classNames("text-xl",{"text-secondary ":animationRunning})} />
+                    className={classNames("btn btn-sm lg:btn-md hover:btn-success hover:btn-outline",{"btn-disabled":true})}>
+                    <FaPause  className={classNames("text-xl",{"text-secondary ":false})} />
                     <span className="hidden md:block">Pause</span>
                 </button>
-                <button className={classNames("btn btn-sm lg:btn-md hover:btn-success  hover:btn-outline",{"btn-disabled":!animationRunning})}>
-                    <FaRegStopCircle  className={classNames("text-xl",{"text-error":animationRunning})} />
+                <button className={classNames("btn btn-sm lg:btn-md hover:btn-success  hover:btn-outline",{"btn-disabled":true})}>
+                    <FaRegStopCircle  className={classNames("text-xl",{"text-error":false})} />
                     <span className="hidden md:block">Quit</span>
                 </button>
-                <button className="btn btn-sm lg:btn-md hover:btn-success hover:btn-outline">
-                    <GrClear  className={"text-primary text-xl"} />
+                <button
+                    className={classNames("btn btn-sm lg:btn-md hover:btn-success hover:btn-outline",{"btn-disabled":animationRunning})}>
+                    <GrClear HiMiniPlay className={classNames("text-xl",{"text-primary ":!animationRunning})} />
                     <span className="hidden md:block">Clear</span>
                 </button>
             </div>
