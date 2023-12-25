@@ -13,6 +13,8 @@ body {
   overflow-x:hidden;
   box-sizing:border-box;
 }
+
+
 .grid-container td {
   height: 1fr;
   width: 1fr;
@@ -47,31 +49,67 @@ body {
   background-color: var(--fallback-b3, oklch(var(--n) / 0.9));
   animation: fadeInWall 0.5s ease-out;
 }
+.img-hero{
+  animation: animate-hero 2s infinite ease alternate;
+}
+.text-stroke{
+  color: transparent;
+  font-family: sans-serif, -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen', 'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue';
+  -webkit-text-stroke: 0.5px var(--fallback-b3, oklch(var(--bc)));
+  white-space:nowrap;
+  position: relative;
+  &::after{
+    content: attr(data-text);
+    position: absolute;
+    top: 0;
+    left: 0;
+    color: var(--fallback-b3, oklch(var(--p)));
+    width: 0;
+    overflow: hidden;
+    white-space: nowrap;
+  }
+  &:hover{
+    &::after{
+      animation: moveText 0.5s linear both;
+
+    }
+  }
+}
+@keyframes moveText {
+  to {
+    width: 100%;
+  }
+}
+@keyframes animate-hero {
+  to {
+    transform: translateY(20px);
+  }
+}
 @keyframes visitedAnimation {
   0% {
     transform: scale(0.8);
-    background-color: #aaffaa;
+    background-color: var(--fallback-p,oklch(var(--s)/0.8));
   }
   50% {
     transform: scale(1.2);
   }
   100% {
     transform: scale(1);
-    background-color: #aaffaa;
+    background-color: var(--fallback-p,oklch(var(--s)/0.8));
   }
 }
 
 @keyframes pathAnimation {
   0% {
     transform: scale(1) rotate(0deg);
-    background-color: #aaaaff;
+    background-color: var(--fallback-p,oklch(var(--wa)/0.8));
   }
   50% {
     transform: scale(1.2) rotate(180deg);
   }
   100% {
     transform: scale(1) rotate(360deg);
-    background-color: #aaaaff;
+    background-color: var(--fallback-p,oklch(var(--wa)/0.8));
   }
 }
 
@@ -172,6 +210,14 @@ body {
   top: calc(var(--value) * -1em);
   text-align: center;
   transition: all 1s linear(0 0%, 0.22 2.1%, 0.86 6.5%, 1.11 8.6%, 1.3 10.7%, 1.35 11.8%, 1.37 12.9%, 1.37 13.7%, 1.36 14.5%, 1.32 16.2%, 1.03 21.8%, 0.94 24%, 0.89 25.9%, 0.88 26.85%, 0.87 27.8%, 0.87 29.25%, 0.88 30.7%, 0.91 32.4%, 0.98 36.4%, 1.01 38.3%, 1.04 40.5%, 1.05 42.7%, 1.05 44.1%, 1.04 45.7%, 1 53.3%, 0.99 55.4%, 0.98 57.5%, 0.99 60.7%, 1 68.1%, 1.01 72.2%, 1 86.7%, 1 100%);
+}
+.hide-scrollbar {
+  scrollbar-width: none;
+  -ms-overflow-style: none;
+  &::-webkit-scrollbar {
+    display: none;
+  }
+
 }
 ::-webkit-scrollbar {
   width: 2px ;

@@ -9,6 +9,8 @@ import {useDispatch, useSelector} from "react-redux";
 import {AppDispatch, RootState} from "../../../../store";
 import {setAnimationSpeed} from "../../../../reducers/gridAnimation/gridAnimation.reducer.ts";
 import {setEnableSounds} from "../../../../reducers/gridSettings/gridSettings.reducer.ts";
+import {Link} from "react-router-dom";
+import {IoIosArrowBack} from "react-icons/io";
 
 interface Props {
     visualize:()=>void;
@@ -18,8 +20,13 @@ const Actions:React.FC<Props> = ({visualize}) => {
     const {enableSounds} = useSelector((state:RootState)=>state.gridSettings);
     const dispatch:AppDispatch = useDispatch();
     return (
-        <div className="w-full flex items-center rounded-b-3xl justify-between bg-base-100 p-3 md:p-5 mb-5 ">
-            <h3 className="hidden md:block text-2xl font-bold">Actions</h3>
+        <div className="w-full flex items-center rounded-b-3xl justify-between bg-base-100 p-3 md:p-5 mb-5">
+            <div className="flex items-center gap-2">
+                <Link to="/" className="btn btn-square btn-sm btn-ghost text-2xl">
+                    <IoIosArrowBack />
+                </Link>
+                <h3 className="hidden md:block text-2xl font-bold">Home</h3>
+            </div>
             <div className={" flex flex-wrap justify-center items-center   gap-3"}>
                 <button
                     onClick={visualize}

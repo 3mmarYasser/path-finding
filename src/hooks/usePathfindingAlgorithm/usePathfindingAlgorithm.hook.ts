@@ -1,4 +1,4 @@
-import { useCallback } from "react";
+import {useCallback, useState} from "react";
 import {AlgorithmType, Cell, CellType} from "../../reducers/Grid/Grid.interface.ts";
 import { useDispatch, useSelector } from "react-redux";
 import { AppDispatch, RootState } from "../../store";
@@ -28,9 +28,8 @@ const usePathfindingAlgorithm = (): ReturnInterface => {
     const { gridData, startCell, endCell, algorithm,shortestPath } = useSelector(
         (state: RootState) => state.grid
     );
-    const { enableAnimation,animationSpeed } = useSelector((state: RootState) => state.gridAnimation);
+    const { enableAnimation,animationSpeed,animationRunning } = useSelector((state: RootState) => state.gridAnimation);
     const { enableDiagonals } = useSelector((state: RootState) => state.gridSettings);
-
     const dispatch: AppDispatch = useDispatch();
 
     const getNeighbors = useCallback(
@@ -134,7 +133,7 @@ const usePathfindingAlgorithm = (): ReturnInterface => {
         // Implement your animation logic for visited cells
         for (let i = 0; i < visitedCells.length; i++) {
             // Simulate delay for animation speed
-            await sleep(1000 / speed);
+            await sleep(120 / speed);
 
             // Dispatch action to update visited cells
             dispatch(setVisitedCells(visitedCells.slice(0, i + 1)));
@@ -145,7 +144,7 @@ const usePathfindingAlgorithm = (): ReturnInterface => {
         // Implement your animation logic for the shortest path
         for (let i = 0; i < shortestPath.length; i++) {
 
-            await sleep(15 / speed);
+            await sleep(120 / speed);
 
             dispatch(setShortestPath(shortestPath.slice(0, i + 1)));
         }
