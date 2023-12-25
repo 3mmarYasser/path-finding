@@ -1,7 +1,10 @@
 // CellGrid.tsx
-import React, { useState } from 'react';
+import React, {useEffect, useState} from 'react';
 import classNames from "classnames";
 import { Cell, CellType } from "../../../../../../reducers/Grid/Grid.interface.ts";
+import {useSelector} from "react-redux";
+import {RootState} from "../../../../../../store";
+import sound from "../../../../../../assets/sounds/the-notification-email-143029.mp3";
 
 interface Props {
     cell: Cell;
@@ -16,7 +19,13 @@ interface Props {
 
 const CellGrid: React.FC<Props> = ({ cell, colIndex, rowIndex, updateCell, isVisited = false, isPath = false, isDrawing, onMouseMove }) => {
     const [isMouseDown, setIsMouseDown] = useState(false);
-
+    const {enableSounds} = useSelector((state: RootState) => state.gridSettings);
+    useEffect(()=>{
+        if (enableSounds && isPath) {
+            const audio = new Audio(sound);
+            audio.play();
+        }
+    },[enableSounds ,isPath])
     const handleCellClick = () => {
         if (!isMouseDown) {
             updateCell(rowIndex, colIndex, {
