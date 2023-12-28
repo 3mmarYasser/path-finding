@@ -20,14 +20,15 @@ interface Props {
 const CellGrid: React.FC<Props> = ({ cell, colIndex, rowIndex, updateCell, isVisited = false, isPath = false, isDrawing, onMouseMove }) => {
     const [isMouseDown, setIsMouseDown] = useState(false);
     const {enableSounds} = useSelector((state: RootState) => state.gridSettings);
+    const {animationRunning} = useSelector((state: RootState) => state.gridAnimation);
     useEffect(()=>{
-        if (enableSounds && isPath) {
+        if (enableSounds && isPath && animationRunning) {
             const audio = new Audio(sound);
             audio.play();
         }
-    },[enableSounds ,isPath])
+    },[enableSounds ,isPath ,animationRunning])
     const handleCellClick = () => {
-        if (!isMouseDown) {
+        if (!isMouseDown && !animationRunning) {
             updateCell(rowIndex, colIndex, {
                 ...cell,
                 type: cell.type === CellType.WALL ? CellType.EMPTY : CellType.WALL,
@@ -40,7 +41,7 @@ const CellGrid: React.FC<Props> = ({ cell, colIndex, rowIndex, updateCell, isVis
     };
 
     const handleMouseEnter = () => {
-        if ((isMouseDown || isDrawing) && cell.type === CellType.EMPTY) {
+        if ((isMouseDown || isDrawing) && cell.type === CellType.EMPTY && !animationRunning) {
             updateCell(rowIndex, colIndex, {
                 ...cell,
                 type: CellType.WALL,
@@ -60,7 +61,11 @@ const CellGrid: React.FC<Props> = ({ cell, colIndex, rowIndex, updateCell, isVis
             onMouseDown={handleMouseDown}
             onMouseEnter={handleMouseEnter}
             onMouseUp={handleMouseUp}
-            className={classNames('cell', cell.type, { visited: isVisited }, { path: isPath })}
+            className={classNames('cell', cell.type,
+                { visited: isVisited },
+                { path: isPath },
+                {"!cursor-auto":animationRunning}
+            )}
         ></td>
     );
 };

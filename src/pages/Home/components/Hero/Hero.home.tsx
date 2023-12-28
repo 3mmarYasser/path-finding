@@ -22,7 +22,9 @@ const Hero:React.FC = () => {
                     </p>
                 </div>
                 <div className="flex-1 xl:flex-[3] relative h-full w-full mx-5 xl:p-0">
-                    <Canvas camera={{fov:25,position:[5,5,5]}}>
+                    <Canvas
+                        style={{width:"100%" ,height:"100%"}}
+                        camera={{fov:25,position:[5,5,5]}}>
                         <Suspense fallback={null}>
                             <OrbitControls enableZoom={false} />
                             <ambientLight intensity={1} />
@@ -42,7 +44,7 @@ const Hero:React.FC = () => {
                         alt=""
                         draggable={false}
                         onContextMenu={(e)=>e.preventDefault()}
-                        className="absolute top-0 left-0 right-0 bottom-0 m-auto w-full h-full object-contain xl:w-auto xl:h-auto xl:rounded-3xl img-hero"
+                        className="absolute max-w-2xl top-0 left-0 right-0 bottom-0 m-auto w-full h-full object-contain xl:w-auto xl:h-auto xl:rounded-3xl img-hero"
                     />
                 </div>
             </div>

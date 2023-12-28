@@ -28,7 +28,7 @@ const usePathfindingAlgorithm = (): ReturnInterface => {
     const { gridData, startCell, endCell, algorithm,shortestPath } = useSelector(
         (state: RootState) => state.grid
     );
-    const { enableAnimation,animationSpeed,animationRunning } = useSelector((state: RootState) => state.gridAnimation);
+    const { enableAnimation,animationSpeed,animationRunning,animationTime } = useSelector((state: RootState) => state.gridAnimation);
     const { enableDiagonals } = useSelector((state: RootState) => state.gridSettings);
 
     const dispatch: AppDispatch = useDispatch();

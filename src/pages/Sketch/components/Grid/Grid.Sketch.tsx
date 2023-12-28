@@ -69,7 +69,7 @@ const Grid: React.FC = () => {
 
     return (
         <DndProvider backend={HTML5Backend}>
-            <div className="w-full h-full shadow-2xl">
+            <div className="w-full h-full shadow-2xl ">
                 <table
                     className={classNames("w-full h-full grid-container ",{"enabled-borders":enableBorders})}
                     onMouseDown={handleMouseDown}

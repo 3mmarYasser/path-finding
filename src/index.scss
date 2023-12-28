@@ -47,6 +47,8 @@ body {
 }
 .grid-container .Wall {
   background-color: var(--fallback-b3, oklch(var(--n) / 0.9));
+  border: 1px solid var(--fallback-b3, oklch(var(--n) / 0.9));
+
   animation: fadeInWall 0.5s ease-out;
 }
 .img-hero{

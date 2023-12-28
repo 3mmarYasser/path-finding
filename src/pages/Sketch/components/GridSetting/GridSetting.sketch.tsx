@@ -11,7 +11,7 @@ import {setEnableAnimation} from "../../../../reducers/gridAnimation/gridAnimati
 
 const GridSetting = () => {
     const {enableDiagonals,enableBorders ,cellSize} = useSelector((state:RootState)=>state.gridSettings);
-    const {enableAnimation} = useSelector((state:RootState)=>state.gridAnimation);
+    const {enableAnimation,animationRunning} = useSelector((state:RootState)=>state.gridAnimation);
     const dispatch:AppDispatch = useDispatch();
     return (
         <div className=" overflow-hidden rounded-box bg-base-100 w-full">
@@ -30,6 +30,7 @@ const GridSetting = () => {
                     <input type="range" min={10} max={50} value={cellSize}
                            onChange={(e)=>dispatch(setCellSize(parseInt(e.target.value)))}
                            step={1}
+                           disabled={animationRunning}
                            className="range  range-sm range-primary" />
                 </label>
 
