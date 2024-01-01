@@ -1,30 +1,70 @@
-# React + TypeScript + Vite
+# Path-Finding Visualizer
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+## [Visit](https://path-finding-three.vercel.app/)
 
-Currently, two official plugins are available:
+A web-based tool to visualize various path-finding algorithms in action.
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+## Table of Contents
+- [Introduction](#introduction)
+- [Features](#features)
+- [Demo](#demo)
+- [Getting Started](#getting-started)
+    - [Installation](#installation)
+- [Algorithms](#algorithms)
+- [License](#license)
+- [Contact](#contact)
 
-## Expanding the ESLint configuration
+## Introduction
 
-If you are developing a production application, we recommend updating the configuration to enable type aware lint rules:
+Welcome to the Path-Finding Visualizer! This project allows users to interactively visualize popular path-finding algorithms on a grid, helping them understand the workings of algorithms like Dijkstra's, A*, DFS, and BFS.
 
-- Configure the top-level `parserOptions` property like this:
+## Features
 
-```js
-export default {
-  // other rules...
-  parserOptions: {
-    ecmaVersion: 'latest',
-    sourceType: 'module',
-    project: ['./features.json', './tsconfig.node.json'],
-    tsconfigRootDir: __dirname,
-  },
-}
-```
+- **Interactive Grid:** Visualize the algorithm in action on an interactive grid.
+- **Multiple Algorithms:** Choose from a variety of path-finding algorithms, including Dijkstra's, A*, BFS, and DFS.
+- **Real-time Metrics:** View real-time metrics like execution time and visited cells during the algorithm's run.
+- **Adjustable Animation Speed:** Customize the animation speed to suit your preference.
+- **Random Maze Generation:** Quickly generate random mazes to test the algorithms on complex scenarios.
+- **Responsive Design:** Enjoy a seamless experience on different devices with responsive design.
+- **Export and Share:** Export and share your visualizations with others.
+- **Educational Tool:** Ideal for learning and teaching path-finding algorithms in a visual and interactive way.
 
-- Replace `plugin:@typescript-eslint/recommended` to `plugin:@typescript-eslint/recommended-type-checked` or `plugin:@typescript-eslint/strict-type-checked`
-- Optionally add `plugin:@typescript-eslint/stylistic-type-checked`
-- Install [eslint-plugin-react](https://github.com/jsx-eslint/eslint-plugin-react) and add `plugin:react/recommended` & `plugin:react/jsx-runtime` to the `extends` list
+## Demo
+
+![Project Demo](./src/assets/images/Screenshot%202023-12-25%20082940.png)
+
+For a live demo, visit [Path Finding Visualizer](https://path-finding-three.vercel.app/visualizer).
+
+## Getting Started
+
+### Installation
+
+1. Clone the repository:
+   ```bash
+   git clone https://github.com/3mmarYasser/path-finding.git
+2. Install the required packages:
+   ```bash
+   cd path-finding
+   npm install
+   ```   
+3. Start the development server:
+   ```bash   
+    npm run dev
+    ```
+## Algorithms
+The visualizer supports various path-finding algorithms, including:
+* Depth-First Search (DFS)
+* Breadth-First Search (BFS)
+* Dijkstra's Algorithm
+* A Star Algorithm
+
+Choose your preferred algorithm through the user interface and visualize how it navigates through the grid to find the shortest path.   
+## License
+
+This project is licensed under the [MIT License](LICENSE) - see the [LICENSE](LICENSE) file for details.   
+
+## Contact
+For any inquiries or suggestions, feel free to reach out:
+- **Email:** ammar.yasseer.mohamed@gmail.com
+- **GitHub:** [3mmarYasser](https://github.com/3mmarYasser)
+- **LinkedIn:** [Ammar Yasser](https://www.linkedin.com/in/ammar-yasser-942473286/)
