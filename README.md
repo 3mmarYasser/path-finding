@@ -26,8 +26,6 @@ Welcome to the Path-Finding Visualizer! This project allows users to interactive
 - **Adjustable Animation Speed:** Customize the animation speed to suit your preference.
 - **Random Maze Generation:** Quickly generate random mazes to test the algorithms on complex scenarios.
 - **Responsive Design:** Enjoy a seamless experience on different devices with responsive design.
-- **Export and Share:** Export and share your visualizations with others.
-- **Educational Tool:** Ideal for learning and teaching path-finding algorithms in a visual and interactive way.
 
 ## Demo
 
