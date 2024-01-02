@@ -38,6 +38,9 @@ export default {
       "night",
       "coffee",
       "winter",
+        "dim",
+        "nord",
+        "sunset",
        {darkpurple: {
 
           "primary": "#AA23FF",
