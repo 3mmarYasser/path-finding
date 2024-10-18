@@ -1,6 +1,6 @@
 # Path-Finding Visualizer
 
-## [Visit](https://path-finding-three.vercel.app/)
+## [Visit]([https://path-finding-three.vercel.app/](https://path-finding-3mmar.vercel.app/))
 
 A web-based tool to visualize various path-finding algorithms in action.
 
@@ -31,7 +31,7 @@ Welcome to the Path-Finding Visualizer! This project allows users to interactive
 
 ![Project Demo](./src/assets/images/Screenshot%202023-12-25%20082940.png)
 
-For a live demo, visit [Path Finding Visualizer](https://path-finding-three.vercel.app/visualizer).
+For a live demo, visit [Path Finding Visualizer](https://vercel.com/3mmaryassers-projects/path-finding-3mmar).
 
 ## Getting Started
 
