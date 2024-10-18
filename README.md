@@ -65,4 +65,4 @@ This project is licensed under the [MIT License](LICENSE) - see the [LICENSE](LI
 For any inquiries or suggestions, feel free to reach out:
 - **Email:** ammar.yasseer.mohamed@gmail.com
 - **GitHub:** [3mmarYasser](https://github.com/3mmarYasser)
-- **LinkedIn:** [Ammar Yasser](https://www.linkedin.com/in/ammar-yasser-942473286/)
+- **LinkedIn:** [Ammar Yasser](https://www.linkedin.com/in/ammar-yasseer/)
