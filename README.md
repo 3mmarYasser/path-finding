@@ -1,6 +1,6 @@
 # Path-Finding Visualizer 2 For Mohamed
 
-## [Visit](https://path-finding-three.vercel.app/)
+## [Visit](https://path-finding-three.vercel.app/).
 
 A web-based tool to visualize various path-finding algorithms in action.
 
