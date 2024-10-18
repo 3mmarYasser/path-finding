@@ -2,7 +2,7 @@ import React, {useEffect, useState} from 'react';
 import AbstractModal from "../AbstractModal/AbstractModal.tsx";
 import {PopsType} from "../../reducers/pops/pops.interface.ts";
 const  themes= [
-    "darkpurple",
+    "night",
     "bluebeard",
     "darksoul",
     "red",
@@ -32,7 +32,7 @@ const  themes= [
     "business",
     "acid",
     "lemonade",
-    "night",
+    "darkpurple",
     "coffee",
     "winter",
     "dim",
