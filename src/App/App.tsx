@@ -10,6 +10,7 @@ import {useDispatch} from "react-redux";
 import {openPop} from "../reducers/pops/pops.reducer.ts";
 import {Pops, PopsType} from "../reducers/pops/pops.interface.ts";
 import HomeV2Page from "../pages/Home/HomeV2.page.tsx";
+import DocsModal from "../components/DocsModal/DocsModal.component.tsx";
 
 const App:React.FC = ()=> {
     const dispatch:AppDispatch = useDispatch();
@@ -24,6 +25,7 @@ const App:React.FC = ()=> {
                           <MdSettingsSuggest />
                       </button>
                       <ThemeModal/>
+                      <DocsModal/>
                       <Routes>
                           <Route index element={<HomeV2Page/>} />
                           <Route path="/visualizer" element={<SketchPage/>} />

@@ -244,3 +244,38 @@ body {
   background-color:  var(--fallback-p,oklch(var(--p)/0.1));
   color:  var(--fallback-b3,oklch(var(--p)))  ;
 }
+.menu-overlay {
+  visibility: hidden;
+  grid-column-start: 1;
+  grid-row-start: 1;
+  cursor: pointer;
+  transition-property: all;
+  transition-duration: .3s;
+  transition-timing-function: cubic-bezier(.4,0,.2,1);
+}
+.menu-overlay-active{
+  visibility: visible;
+  --tw-bg-opacity: .4;
+}
+
+.menu-side{
+  --tw-translate-x: 100%;
+  transform: translate(var(--tw-translate-x),var(--tw-translate-y)) rotate(var(--tw-rotate)) skew(var(--tw-skew-x)) skewY(var(--tw-skew-y)) scaleX(var(--tw-scale-x)) scaleY(var(--tw-scale-y));
+  transition-property: all;
+  transition-duration: .3s;
+  transition-timing-function: cubic-bezier(.4,0,.2,1);
+  cursor: auto;
+}
+.menu-side-active{
+  --tw-translate-x: 0 !important;
+  --tw-translate-y: 0 !important;
+  transform: translate(var(--tw-translate-x),var(--tw-translate-y)) rotate(var(--tw-rotate)) skew(var(--tw-skew-x)) skewY(var(--tw-skew-y)) scaleX(var(--tw-scale-x)) scaleY(var(--tw-scale-y));
+}
+.menu-slide-phone{
+  @media (max-width: 640px) {
+    &{
+      --tw-translate-y: 100%;
+      --tw-translate-x: 0;
+    }
+  }
+}

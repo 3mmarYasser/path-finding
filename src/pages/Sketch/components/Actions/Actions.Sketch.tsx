@@ -12,6 +12,8 @@ import {setEnableSounds} from "../../../../reducers/gridSettings/gridSettings.re
 import {Link} from "react-router-dom";
 import {IoIosArrowBack} from "react-icons/io";
 import {SiGoogledocs} from "react-icons/si";
+import {openPop} from "../../../../reducers/pops/pops.reducer.ts";
+import {Pops, PopsType} from "../../../../reducers/pops/pops.interface.ts";
 
 interface Props {
     visualize:()=>void;
@@ -52,6 +54,7 @@ const Actions:React.FC<Props> = ({visualize}) => {
                     <span className="hidden md:block">Clear</span>
                 </button>
                 <button
+                    onClick={()=>dispatch(openPop({type:PopsType.DocsMenu ,data:null}as Pops))}
                     className={classNames("btn btn-sm lg:btn-md hover:btn-success hover:btn-outline")}>
                     <SiGoogledocs HiMiniPlay className={classNames("text-xl text-primary")}/>
                     <span className="hidden md:block">Docs</span>
