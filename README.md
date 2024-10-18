@@ -31,7 +31,7 @@ Welcome to the Path-Finding Visualizer! This project allows users to interactive
 
 ![Project Demo](./src/assets/images/Screenshot%202023-12-25%20082940.png)
 
-For a live demo, visit [Path Finding Visualizer](https://path-finding-3mmar.vercel.app/).
+For a live demo, visit [Path Finding Visualizer](https://path-finding-3mmar.vercel.app/visualizer).
 
 ## Getting Started
 
