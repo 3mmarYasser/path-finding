@@ -11,6 +11,7 @@ import {setAnimationRunning, setAnimationSpeed} from "../../../../reducers/gridA
 import {setEnableSounds} from "../../../../reducers/gridSettings/gridSettings.reducer.ts";
 import {Link} from "react-router-dom";
 import {IoIosArrowBack} from "react-icons/io";
+import {SiGoogledocs} from "react-icons/si";
 
 interface Props {
     visualize:()=>void;
@@ -30,24 +31,30 @@ const Actions:React.FC<Props> = ({visualize}) => {
             <div className={" flex flex-wrap justify-center items-center   gap-3"}>
                 <button
                     onClick={visualize}
-                    className={classNames("btn btn-sm lg:btn-md hover:btn-success hover:btn-outline",{"btn-disabled":animationRunning})}>
-                    <HiMiniPlay className={classNames("text-xl",{"text-success ":!animationRunning})} />
+                    className={classNames("btn btn-sm lg:btn-md hover:btn-success hover:btn-outline", {"btn-disabled": animationRunning})}>
+                    <HiMiniPlay className={classNames("text-xl", {"text-success ": !animationRunning})}/>
                     <span className="hidden md:block">Visualize</span>
                 </button>
                 <button
-                    onClick={()=>dispatch(setAnimationRunning(false))}
-                    className={classNames("btn btn-sm lg:btn-md hover:btn-success hover:btn-outline",{"btn-disabled":true})}>
-                    <FaPause  className={classNames("text-xl",{"text-secondary ":false})} />
+                    onClick={() => dispatch(setAnimationRunning(false))}
+                    className={classNames("btn btn-sm lg:btn-md hover:btn-success hover:btn-outline", {"btn-disabled": true})}>
+                    <FaPause className={classNames("text-xl", {"text-secondary ": false})}/>
                     <span className="hidden md:block">Pause</span>
                 </button>
-                <button className={classNames("btn btn-sm lg:btn-md hover:btn-success  hover:btn-outline",{"btn-disabled":true})}>
-                    <FaRegStopCircle  className={classNames("text-xl",{"text-error":false})} />
+                <button
+                    className={classNames("btn btn-sm lg:btn-md hover:btn-success  hover:btn-outline", {"btn-disabled": true})}>
+                    <FaRegStopCircle className={classNames("text-xl", {"text-error": false})}/>
                     <span className="hidden md:block">Quit</span>
                 </button>
                 <button
-                    className={classNames("btn btn-sm lg:btn-md hover:btn-success hover:btn-outline",{"btn-disabled":animationRunning})}>
-                    <GrClear HiMiniPlay className={classNames("text-xl",{"text-primary ":!animationRunning})} />
+                    className={classNames("btn btn-sm lg:btn-md hover:btn-success hover:btn-outline", {"btn-disabled": animationRunning})}>
+                    <GrClear HiMiniPlay className={classNames("text-xl", {"text-primary ": !animationRunning})}/>
                     <span className="hidden md:block">Clear</span>
+                </button>
+                <button
+                    className={classNames("btn btn-sm lg:btn-md hover:btn-success hover:btn-outline")}>
+                    <SiGoogledocs HiMiniPlay className={classNames("text-xl text-primary")}/>
+                    <span className="hidden md:block">Docs</span>
                 </button>
             </div>
             <div className="flex items-center  mr-2 gap-3">
