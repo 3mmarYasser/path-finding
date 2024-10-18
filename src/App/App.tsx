@@ -9,6 +9,7 @@ import {AppDispatch} from "../store";
 import {useDispatch} from "react-redux";
 import {openPop} from "../reducers/pops/pops.reducer.ts";
 import {Pops, PopsType} from "../reducers/pops/pops.interface.ts";
+import HomeV2Page from "../pages/Home/HomeV2.page.tsx";
 
 const App:React.FC = ()=> {
     const dispatch:AppDispatch = useDispatch();
@@ -24,7 +25,7 @@ const App:React.FC = ()=> {
                       </button>
                       <ThemeModal/>
                       <Routes>
-                          <Route index element={<HomePage/>} />
+                          <Route index element={<HomeV2Page/>} />
                           <Route path="/visualizer" element={<SketchPage/>} />
                       </Routes>
                   </main>
