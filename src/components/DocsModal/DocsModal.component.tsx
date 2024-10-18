@@ -1,12 +1,11 @@
 import React, { FunctionComponent } from 'react';
-import AbstractModal from "../AbstractModal/AbstractModal.tsx";
 import {PopsType} from "../../reducers/pops/pops.interface.ts";
 import AbstractPop from "../AbstractPop/AbstractPop.tsx";
 import {useDispatch, useSelector} from "react-redux";
 import {AppDispatch, RootState} from "../../store";
 import classNames from "classnames";
-import {dispatch} from "d3";
 import {closePop} from "../../reducers/pops/pops.reducer.ts";
+import pdfFile from "./../../assets/ORC.pdf"
 
 interface OwnProps {}
 
@@ -29,8 +28,9 @@ const DocsModal: FunctionComponent<Props> = (props) => {
                   }}/>
 
               <aside
-                  className={classNames("w-full sm:w-96 h-full  bg-base-300 flex flex-col text-base-content p-2 ml-auto relative  menu-side hidden-scrollbar rounded-l-sm", {"menu-side-active": menu})}>
-                  <p>Hello</p>
+                  className={classNames("w-full sm:w-[34rem] h-full  bg-base-300 flex flex-col text-base-content  ml-auto relative  menu-side hidden-scrollbar rounded-l-sm", {"menu-side-active": menu})}>
+                  <object data={pdfFile} 	type="application/pdf"
+                          className={"w-full h-full"} />
 
               </aside>
 
