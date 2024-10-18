@@ -1,4 +1,4 @@
-# Path-Finding Visualizer
+# Path-Finding Visualizer 2 For Mohamed
 
 ## [Visit](https://path-finding-three.vercel.app/)
 
